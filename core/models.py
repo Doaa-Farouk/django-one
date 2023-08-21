@@ -6,18 +6,19 @@ class Speaker(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     about = models.TextField()
+    picture = models.ImageField(null=True, upload_to='media/Speakers')
 
 class Accounts(models.Model):
-    twitter = models.CharField(max_length=100, null=True)
-    instagram = models.CharField(max_length=100, null=True)
+    instagram = models.CharField(max_length=100,null=True)
     linkedin = models.CharField(max_length=100, null=True)
+    twitter = models.CharField(max_length=100,  null=True)
     facebook = models.CharField(max_length=100, null=True)
     speaker = models.ForeignKey(Speaker, on_delete=models.CASCADE)
 
 class Sponsor(models.Model):
     name = models.CharField(max_length=100)
     about = models.TextField()
-    logo = models.ImageField()
+    logo = models.ImageField(upload_to='media/Sponsors')
 
 class Venue(models.Model):
     country = models.CharField(max_length=50)
